@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Script from "next/script";
 import getConstants from "../constants";
 import examConfigs from "../examConfig";
 import Dropdown from "../components/dropdown";
@@ -20,13 +19,11 @@ const ExamForm = () => {
         exam: selectedOption.value,
         rank: 0,
         code: selectedOption.code,
-        // apiEndpoint: selectedOption.apiEndpoint,
       });
     } else {
       setFormData({
         exam: selectedOption.value,
         rank: 0,
-        // apiEndpoint: selectedOption.apiEndpoint,
       });
     }
   };
@@ -45,13 +42,16 @@ const ExamForm = () => {
       rank: enteredRank,
     }));
   };
+  
   const handleSubmit = async () => {
     const queryString = Object.entries(formData)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&");
     router.push(`/college_predictor?${queryString}`);
   };
+
   const isSubmitDisabled = Object.values(formData).some((value) => !value);
+
   const renderFields = () => {
     if (!selectedExam) return null;
 
@@ -82,24 +82,11 @@ const ExamForm = () => {
       </Head>
       <div className="flex flex-col h-fit">
         <div className="flex flex-col justify-start items-center w-full mt-8 pb-10">
-          <Script
-            src="https://www.googletagmanager.com/gtag/js?id=G-FHGVRT52L7"
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){window.dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', 'G-FHGVRT52L7');
-                      `}
-          </Script>
           <div className="text-center flex flex-col items-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mt-8 p-8 pb-10 bg-[#f8f9fa] shadow-inner drop-shadow-md rounded-md">
             <h1 className="text-2xl md:text-3xl font-bold mb-6">
               {getConstants().TITLE}
             </h1>
-            <div className="flex flex-col justify-center sm:flex-row  flex-wrap w-full">
+            <div className="flex flex-col justify-center sm:flex-row flex-wrap w-full">
               <div className="my-4 w-full sm:w-3/4">
                 <label
                   htmlFor="exam"
