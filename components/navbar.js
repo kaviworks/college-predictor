@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Facebook } from "lucide-react";
-import { Instagram } from "lucide-react";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
 // Renders Navbar as General Component
@@ -20,15 +19,16 @@ const Navbar = ({ item1, item2 }) => {
         </div>
 
         <div className="flex gap-4">
-          <SocialIcon socialLink={"https://www.facebook.com/avantifellows"}>
-            <Facebook color="#fff" fill="#fff" strokeWidth="0.1" />
-          </SocialIcon>
-          <SocialIcon socialLink={"https://www.instagram.com/avantifellows"}>
-            <Instagram color="#fff" />
-          </SocialIcon>
+          <a href="https://www.facebook.com/avantifellows" target="_blank" rel="noopener noreferrer">
+            <FaFacebook size={45} color="#05ac4c" style={{ backgroundColor: "#fff", borderRadius: "50%", padding: "4px" }} />
+          </a>
+          <a href="https://www.instagram.com/avantifellows" target="_blank" rel="noopener noreferrer">
+            <FaInstagram size={45} color="#05ac4c" style={{ backgroundColor: "#fff", borderRadius: "50%", padding: "4px" }} />
+          </a>
         </div>
+
       </div>
-      <div className="bg-[#B52326] text-xl w-full h-16 flex items-center justify-center text-white">
+      <div className="bg-[#05ac4c] text-xl w-full h-16 flex items-center justify-center text-white">
         <div className="flex text-white text-lg gap-10">
           <Link
             href="/"

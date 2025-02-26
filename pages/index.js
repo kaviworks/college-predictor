@@ -131,12 +131,13 @@ const ExamForm = () => {
             {selectedExam && (
               <>
                 <button
-                  className="mt-2 px-5 py-2 rounded-lg bg-red-600 text-white cursor-pointer hover:bg-red-700 active:bg-red-800 disabled:bg-gray-300 disabled:cursor-not-allowed -translate-x-4"
+                  className="mt-2 px-5 py-2 rounded-lg bg-[#05ac4c] text-white cursor-pointer hover:bg-[#04943f] active:bg-[#037c34] disabled:bg-gray-300 disabled:cursor-not-allowed -translate-x-4"
                   disabled={isSubmitDisabled}
                   onClick={handleSubmit}
                 >
                   Submit
                 </button>
+                
                 {isSubmitDisabled && (
                   <p className="text-red-600 text-sm mt-2 -translate-x-4">
                     Please fill all the fields before submitting!

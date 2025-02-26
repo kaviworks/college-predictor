@@ -14,11 +14,11 @@
 }
 
 .option--is-focused {
-  background-color: #b52326;
+  background-color: #05ac4c;
 }
 
 .option--is-selected {
-  background-color: #b52326;
+  background-color: #05ac4c;
   color: white;
 }
 

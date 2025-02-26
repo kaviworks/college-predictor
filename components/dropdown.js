@@ -4,11 +4,11 @@ import Select from "react-select";
 const customStyles = {
   control: (provided) => ({
     ...provided,
-    "borderRadius": "0.25rem",
-    "borderColor": "rgba(209, 213, 219)",
-    "boxShadow": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    borderRadius: "0.25rem",
+    borderColor: "rgba(209, 213, 219)",
+    boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
     "&:hover": {
-      borderColor: "rgba(156, 163, 175)",
+      borderColor: "#05ac4c",
     },
   }),
   option: (provided, state) => ({
@@ -16,9 +16,9 @@ const customStyles = {
     padding: "0.5rem 1rem",
     color: state.isSelected ? "white" : "rgba(55, 65, 81)",
     backgroundColor: state.isFocused
-      ? "rgba(255, 182, 193, 0.8)"
+      ? "rgba(5, 172, 76, 0.2)" // Light green on hover
       : state.isSelected
-      ? "#b52326"
+      ? "#05ac4c" // Selected option background
       : "white",
   }),
   menu: (provided) => ({
@@ -28,7 +28,7 @@ const customStyles = {
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: "#000",
+    color: "#05ac4c",
   }),
 };
 
