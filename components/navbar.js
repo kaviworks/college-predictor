@@ -9,24 +9,25 @@ const Navbar = ({ item1, item2 }) => {
   return (
     <div className="bg-white shadow-md">
       <div className="flex flex-row justify-between items-center px-4 md:px-8 py-2">
-        <div className="relative w-32 md:w-40 aspect-video">
+        {/* Logo Section */}
+        {/* <div className="relative w-32 md:w-40 aspect-video">
           <img
             src="https://cdn.avantifellows.org/af_logos/avanti_logo_black_text.webp"
             alt="Avanti Fellows logo"
             layout="fill"
             className="object-contain"
           />
-        </div>
+        </div> */}
 
-        <div className="flex gap-4">
+        {/* Social Media Links */}
+        {/* <div className="flex gap-4">
           <a href="https://www.facebook.com/avantifellows" target="_blank" rel="noopener noreferrer">
             <FaFacebook size={45} color="#05ac4c" style={{ backgroundColor: "#fff", borderRadius: "50%", padding: "4px" }} />
           </a>
           <a href="https://www.instagram.com/avantifellows" target="_blank" rel="noopener noreferrer">
             <FaInstagram size={45} color="#05ac4c" style={{ backgroundColor: "#fff", borderRadius: "50%", padding: "4px" }} />
           </a>
-        </div>
-
+        </div> */}
       </div>
       <div className="bg-[#05ac4c] text-xl w-full h-16 flex items-center justify-center text-white">
         <div className="flex text-white text-lg gap-10">
