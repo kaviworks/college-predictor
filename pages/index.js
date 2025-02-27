@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import getConstants from "../constants";
 import examConfigs from "../examConfig";
 import { FaGraduationCap, FaClipboardList, FaSortNumericUp, FaCheckCircle } from "react-icons/fa";
@@ -10,8 +10,15 @@ const ExamForm = () => {
   const [selectedExam, setSelectedExam] = useState("");
   const [formData, setFormData] = useState({});
   const [config, setConfig] = useState(null);
-  const [isPopupVisible, setIsPopupVisible] = useState(true);
+  const [isPopupVisible, setIsPopupVisible] = useState(false); 
   const router = useRouter();
+
+  useEffect(() => {
+    const hasSeenPopup = localStorage.getItem("hasSeenPopup");
+    if (!hasSeenPopup) {
+      setIsPopupVisible(true); 
+    }
+  }, []);
 
   const handleExamChange = (selectedOption) => {
     setSelectedExam(selectedOption.value);
@@ -79,8 +86,8 @@ const ExamForm = () => {
 
   const Popup = ({ onClose }) => {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4 sm:p-0">
+        <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg max-w-sm sm:max-w-md w-full text-center">
           <h2 className="text-2xl font-bold mb-4 flex justify-center items-center gap-2">
             🎓 Welcome to College Predictor!
           </h2>
@@ -105,7 +112,7 @@ const ExamForm = () => {
           </ul>
           <button
             onClick={onClose}
-            className="mt-6 px-5 py-2 rounded-lg bg-[#05ac4c] text-white hover:bg-[#04943f] transition-all"
+            className="mt-6 px-5 py-2 rounded-lg bg-[#05ac4c] text-white hover:bg-[#04943f] transition-all w-full sm:w-auto"
           >
             Got it!
           </button>
@@ -114,12 +121,17 @@ const ExamForm = () => {
     );
   };
 
+  const handlePopupClose = () => {
+    setIsPopupVisible(false);
+    localStorage.setItem("hasSeenPopup", "true"); 
+  };
+
   return (
     <>
       <Head>
         <title>College Predictor - Home</title>
       </Head>
-      {isPopupVisible && <Popup onClose={() => setIsPopupVisible(false)} />}
+      {isPopupVisible && <Popup onClose={handlePopupClose} />}
       <div className="flex flex-col h-fit">
         <div className="flex flex-col justify-start items-center w-full mt-8 pb-10">
           <div className="text-center flex flex-col items-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mt-8 p-8 pb-10 bg-[#f8f9fa] shadow-inner drop-shadow-md rounded-md">
