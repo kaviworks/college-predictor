@@ -150,7 +150,7 @@ const ExamForm = () => {
                 <div className="my-4 w-full sm:w-3/4">
                   <label className="block text-md font-semibold text-gray-700 mb-2 -translate-x-3">
                     {selectedExam === "TNEA"
-                      ? "Enter Marks"
+                      ? "Enter Cutoff"
                       : "Enter Category Rank"}
                   </label>
                   <input
@@ -161,7 +161,7 @@ const ExamForm = () => {
                     className="border border-gray-300 rounded w-full p-2 text-center"
                     placeholder={
                       selectedExam === "TNEA"
-                        ? "Enter your marks"
+                        ? "Enter your cutoff"
                         : "Enter your rank"
                     }
                   />
