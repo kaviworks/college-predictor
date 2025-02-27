@@ -137,7 +137,7 @@ const CollegePredictor = () => {
         <div className="flex gap-2 items-center">
           <label className="block text-sm md:text-base font-semibold text-gray-700 mb-2 ">
             {router.query.exam === "TNEA"
-              ? "Enter Marks"
+              ? "Enter Cutoff"
               : "Enter Category Rank"}
           </label>
           <input
@@ -148,7 +148,7 @@ const CollegePredictor = () => {
             className="border border-gray-300 rounded text-center"
             placeholder={
               router.query.exam === "TNEA"
-                ? "Enter your marks"
+                ? "Enter your Cutoff"
                 : "Enter your rank"
             }
           />

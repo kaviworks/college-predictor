@@ -96,7 +96,7 @@ const ExamForm = () => {
             </li>
             <li className="flex items-center gap-2">
               <FaSortNumericUp className="text-purple-500" />
-              <span>Enter your rank or marks based on the exam.</span>
+              <span>Enter your rank or cutoff based on the exam.</span>
             </li>
             <li className="flex items-center gap-2">
               <FaCheckCircle className="text-orange-500" />
