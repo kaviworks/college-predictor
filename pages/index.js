@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import getConstants from "../constants";
 import examConfigs from "../examConfig";
+import { FaGraduationCap, FaClipboardList, FaSortNumericUp, FaCheckCircle } from "react-icons/fa";
 import Dropdown from "../components/dropdown";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -9,6 +10,7 @@ const ExamForm = () => {
   const [selectedExam, setSelectedExam] = useState("");
   const [formData, setFormData] = useState({});
   const [config, setConfig] = useState(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(true);
   const router = useRouter();
 
   const handleExamChange = (selectedOption) => {
@@ -42,7 +44,7 @@ const ExamForm = () => {
       rank: enteredRank,
     }));
   };
-  
+
   const handleSubmit = async () => {
     const queryString = Object.entries(formData)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
@@ -75,11 +77,49 @@ const ExamForm = () => {
     ));
   };
 
+  const Popup = ({ onClose }) => {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+          <h2 className="text-2xl font-bold mb-4 flex justify-center items-center gap-2">
+            🎓 Welcome to College Predictor!
+          </h2>
+          <p className="mb-4 text-gray-700">Follow these simple steps to get started:</p>
+          <ul className="list-none space-y-3 text-left">
+            <li className="flex items-center gap-2">
+              <FaGraduationCap className="text-blue-500" />
+              <span>Select an exam from the dropdown.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaClipboardList className="text-green-500" />
+              <span>Fill in the required fields.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaSortNumericUp className="text-purple-500" />
+              <span>Enter your rank or marks based on the exam.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaCheckCircle className="text-orange-500" />
+              <span>Click "Submit" to see your predicted colleges.</span>
+            </li>
+          </ul>
+          <button
+            onClick={onClose}
+            className="mt-6 px-5 py-2 rounded-lg bg-[#05ac4c] text-white hover:bg-[#04943f] transition-all"
+          >
+            Got it!
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <Head>
         <title>College Predictor - Home</title>
       </Head>
+      {isPopupVisible && <Popup onClose={() => setIsPopupVisible(false)} />}
       <div className="flex flex-col h-fit">
         <div className="flex flex-col justify-start items-center w-full mt-8 pb-10">
           <div className="text-center flex flex-col items-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mt-8 p-8 pb-10 bg-[#f8f9fa] shadow-inner drop-shadow-md rounded-md">
