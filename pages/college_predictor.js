@@ -148,7 +148,7 @@ const CollegePredictor = () => {
             className="border border-gray-300 rounded text-center"
             placeholder={
               router.query.exam === "TNEA"
-                ? "Enter your Cutoff"
+                ? "Enter your cutoff"
                 : "Enter your rank"
             }
           />
